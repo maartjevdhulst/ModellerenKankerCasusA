@@ -1,0 +1,25 @@
+# Logboek Maartje 
+## Modelleren van Kanker Casus A: Dynamic modelling (ODEs)
+
+### Inleiding
+Voor het vak Modelleren van Kanker zullen verschillende casussen behandelen, waarvan dit de eerste is. Bij deze cusus gaan we bezig met dynamische modellen op basis van differentiaalvergelijkingen. !TODO Uitbreiden
+
+### Leerdoelen
+- Je begrijpt differentiaalvergelijkingen en benoemt toepassingsmogelijkheden in natuurwetenschappelijke context.
+- Je implementeert ODE-solvers in een eigen python-module of -package dat kan worden toegepast om data te fitten en te visualiseren.
+- Je optimaliseert niet-lineaire parameters van uiteenlopende modellen en vergelijkt kwantitatief hun overeenstemming met data om het beste model te bepalen.
+- Je past dynamische modellen toe op oncologische data om de groei van tumoren te beschrijven.
+
+### 16-11-2026
+Vandaag zijn aan dit vak begonnen en zijn de groepsverdelingen gemaakt. Ik ben begonnen met zo goed mogelijk alle gegeven informatie doornemen om een beeld van het vak en de opdracht te krijgen. Ik heb een git repo aangemaakt, om alles op een centrale plek te hebben. Vervolgens ben ik begonnen met het opzetten van dit logboek, om goed bij te kunnen houden wat ik allemaal uitgezocht en geprobeerd heb. Het artikel dat bij deze opdracht meegegeven is: [Treatment Optimization for Tumor Growth by Ordinary Differential Equations](https://pdfs.semanticscholar.org/f6ee/c4177cef6405658d391ce685363a197e7534.pdf) 
+
+De eerste twee workshops zijn vandaag geweest waarbij we differentiaalvergelijkingen en ODE-solvers behandeld hebben. We hebben het werk aan de hand van deze workshops nu ook verdeeld; Ik ga bezig met workshop 1 en Isa met workshop 2.
+
+Vandaag heeft vooral in het teken gestaan van het project opzetten, verdiepen in de opdracht en inlezen van de meegeleverde achtergrondinformatie. Ik wil verder gaan met een basale versie opzetten, zodat er aan de hand daarvan geplot kan worden en dat daarna van alles geprobeerd kan worden om betere grip op de stof te krijgen.
+
+
+
+
+
+
+
