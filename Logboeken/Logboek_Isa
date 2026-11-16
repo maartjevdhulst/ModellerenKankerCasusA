@@ -1,0 +1,54 @@
+# Logboek Isa
+**Module: Modulleren met kanker**
+**Datum: 16-11-2026**
+
+## Introductie
+
+De komende periode gaan wij ons focussen op de module Modelleren met kanker. Tijdens deze module onderzoeken we hoe (wiskundige) modellen gebruikt kunnen worden om de groei van tumoren te beschrijven en te voorspellen. 
+
+Hierbij maken we gebruik van gewone differentiaalvergelijkingen (ODE's), die beschrijven hoe het tumorvolume verandert over de tijd. 
+
+Er bestaan verschillende modellen om tumorgroei te beschrijven, waaronder het logistische model, het Von Bertalanffy-model en het Gompertz-model. 
+
+In deze casus leren we hoe we deze modellen met Python kunnen oplossen en optimaliseren. Hiervoor gebruiken we (waarschijnlijk?) bestaande datasets uit wetenschappelijke publicaties. 
+
+Door de modellen aan deze data te fitten en met elkaar te vergelijken, onderzoeken we welk model de tumorgroei het beste beschrijft. Hierbij maken we onder andere gebruik van verschillende ODE-solvers, optimalisatiemethoden en de AIC- en BIC-criteria.
+
+## Week 1
+
+### Maandag 16-11-2026
+
+Vandaag hadden wij de eerste les en daarmee de introductie van de module Modulleren met kanker.
+
+Onze groep is begonnen met het doornemen van het bijgevoegde artikel van Casus A genaamd: Treatment Optimization for Tumor Growth by Ordinary Differential Equations.
+
+Hier heb ik het volgende uit kunnen halen:
+
+Gewone differentiaalvergelijkingen (ODE's) worden veelvuldig gebruikt als wiskundig model voor tumorgroei. Er bestaat echter in de bestaande literatuur geen consensus over welk ODE-model het meest accuraat is wanneer het wordt getoetst aan gegevens over tumorgroei. In het artikel worden verschillende ODE's toegepast op 2 datasets over tumorgroei.
+
+In het artikel zijn de volgende modellen gebruikt om dit te onderzoeken:
+
+Hier bespreken we kort drie gevestigde en populaire methoden die worden gebruikt om tumorgroei te voorspellen: de logistische, de Bertalanffy- en de Gompertz-modellen (geformuleerd als gewone differentiaalvergelijkingen). Vervolgens passen we deze modellen aan om de behandeling erin te verwerken.
+
+- Logistic Model: 
+Het logistische model wordt weergegeven door de volgende differentiaalvergelijking, waarin sprake is van een lineaire afname van de groeisnelheid en een draagkracht van b (Vogels et al., 1838).
+
+- Bertalanffy Model: 
+Dit model werd in 1957 door Ludwig von Bertalanffy ontwikkeld om de groei van organismen te beschrijven (Von Bertalanffy, 1957). De eerste term van de gewone differentiaalvergelijking (ODE) is van de orde ⅔; dit vloeit voort uit het 'oppervlaktemodel', dat ervan uitgaat dat celgroei evenredig is aan het oppervlak van de cel – wat bepalend is voor de hoeveelheid energie of voedingsstoffen die een cel kan opnemen. Daarnaast houdt het Bertalanffy-model via de twee termen in de vergelijking rekening met zowel celsynthese als celsterfte, waarbij elke term een ​​eigen parameter (a of b) bevat (Murphy et al., 2016).
+
+- Gompertz Model: 
+Tot slot is er het Gompertz-model, weergegeven door de onderstaande differentiaalvergelijking; dit model werd in 1825 door Benjamin Gompertz opgesteld om menselijke sterfte te beschrijven en de waarde van levensverzekeringen te bepalen (Kirkwood, 2015). De gewone differentiaalvergelijking (ODE) beschrijft een exponentiële afname van de groeisnelheid, evenals een maximale tumoromvang (Murphy et al., 2016).
+
+Behandelingsmodellen
+Om de behandeling mee te kunnen berekenen, passen we de bovengenoemde modellen aan om
+
+- Logistic Model for Type I Treatment
+- Bertalanffy Model for Type I Treatment
+- Gompertz Model for Type I Treatment
+- Logistic Model for Type II Treatment
+- Bertalanffy Model for Type II Treatment
+- Gompertz Model for Type II Treatment
+
+In de verschillende modellen is de tijd tegenover de tumorgrootte geplot.
+
+## Referenties
