@@ -1,10 +1,10 @@
 # Logboek Isa
-**Module: Modulleren met kanker**
+**Module: Modelleren van kanker**
 **Datum: 16-11-2026**
 
 ## Introductie
 
-De komende periode gaan wij ons focussen op de module Modelleren met kanker. Tijdens deze module onderzoeken we hoe (wiskundige) modellen gebruikt kunnen worden om de groei van tumoren te beschrijven en te voorspellen. 
+De komende periode gaan wij ons focussen op de module Modelleren van kanker. Tijdens deze module onderzoeken we hoe (wiskundige) modellen gebruikt kunnen worden om de groei van tumoren te beschrijven en te voorspellen. 
 
 Hierbij maken we gebruik van gewone differentiaalvergelijkingen (ODE's), die beschrijven hoe het tumorvolume verandert over de tijd. 
 
@@ -51,4 +51,24 @@ Om de behandeling mee te kunnen berekenen, passen we de bovengenoemde modellen a
 
 In de verschillende modellen is de tijd tegenover de tumorgrootte geplot.
 
+### Dinsdag 17-11-2026
+
+Vandaag ga ik mij verder inlezen in ODE's, die onder anderen ook worden besproken in workshop 2.
+Ik ga hiervoor code schrijven in het python bestand 'models.py' onder het mapje 'tumor_model'.
+
+In de onderstaande tekst heb ik genoteerd wat ik heb gevonden over ODE's en hoe het ons verder gaat helpen bij dit project:
+
+ODE staat voor Ordinary Differential Equation, in het Nederlands: een gewone differentiaalvergelijking. Een ODE beschrijft hoe een bepaalde waarde verandert over tijd (of een andere variabele). Het belangrijkste bij een ODE is dat je kijkt naar de veranderingssnelheid van iets.
+
+Ik wil nu verder gaan onderzoeken welke ODE's passen zijn bij onze data, aangezien er veel verschillende ODE's zijn en niet elke ODE toegepast kan worden in elke situatie. 
+
+Onder workshop 2 in Brightspace wordt onder anderen de Euler's en Heun's methode uitgelegd. 
+
+Ik lees ook net dat er nog een verschil zit tussen ODE-models en ODE-solvers.
+Het verschil tussen de twee termen is dat een model beschrijft hoe iets verandert, terwijl een solver berekent hoe die verandering loopt.
+
+
+
 ## Referenties
+- Chan, K., Kao, C.-Y., Gordinier, J., & Ganden, K. (2023). Treatment Optimization for Tumor Growth by Ordinary Differential Equations. Journal Of Student Research, 12(4), 1. https://pdfs.semanticscholar.org/f6ee/c4177cef6405658d391ce685363a197e7534.pdf#:~:text=In%20this%20paper%2C%20we%20analyze%20the%20efficacy%20of,our%20treatment%20function%2C%20as%20defined%20within%20our%20models.
+- https://functions.boardflare.com/math/calculus/ode-models/#:~:text=While%20the%20general-purpose%20ODE%20solvers%20handle%20arbitrary%20user-defined,with%20known%20behaviors%2C%20parameter%20interpretations%2C%20and%20real-world%20applications.
