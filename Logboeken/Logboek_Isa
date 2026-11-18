@@ -67,6 +67,12 @@ Onder workshop 2 in Brightspace wordt onder anderen de Euler's en Heun's methode
 Ik lees ook net dat er nog een verschil zit tussen ODE-models en ODE-solvers.
 Het verschil tussen de twee termen is dat een model beschrijft hoe iets verandert, terwijl een solver berekent hoe die verandering loopt.
 
+### Woensdag 18-11-2026
+
+Vandaag hebben wij uitleg gekregen over de optimalisatie van de modellen. 
+Dit kan aan de hand van de MSE. 
+
+Ik zal vandaag verder gaan met het testen van modellen en deze daarna proberen te optimaliseren.
 
 
 ## Referenties
