@@ -136,8 +136,6 @@ def main():
 
     optimize_models(ts_input, ys_input, results)
 
-    # calculate_BIC_AIC_AICc(ys_input, results)
-
 
 if __name__ == "__main__":
     main()
