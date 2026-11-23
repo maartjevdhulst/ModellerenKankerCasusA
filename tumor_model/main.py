@@ -13,7 +13,7 @@ from solvers import (
     rk4_solver
 )
 
-from comparison import compare_results
+from comparison import compare_results, calculate_BIC_AIC_AICc
 from visualization import plot_results
 
 
@@ -69,7 +69,7 @@ def run_comparisons(ts_input, ys_input, models, solvers):
 
 
 # Zoek de beste parameters met Monte Carlo
-def optimize_models(ts_input, ys_input):
+def optimize_models(ts_input, ys_input, solver_results):
 
     # Neem de modellen en hun parameters
     models = {
@@ -92,12 +92,15 @@ def optimize_models(ts_input, ys_input):
             if result[2] < best_result[2]:
                 best_result = result
 
+        bic_aic = calculate_BIC_AIC_AICc(ys_input, best_result, solver_results)
+
         # Print de beste parameters en MSE
         print(name)
         print("Beste r:", best_result[0])
         if name != "Exponentieel":
             print("Beste K:", best_result[1])
         print("Laagste MSE:", best_result[2])
+        print("Modelvergelijking:\n", bic_aic)
 
 
 # Main functie waarin elke stap wordt uitgevoerd
@@ -118,7 +121,9 @@ def main():
 
     plot_results(ts_input, ys_input, results)
 
-    optimize_models(ts_input, ys_input)
+    optimize_models(ts_input, ys_input, results)
+
+    # calculate_BIC_AIC_AICc(ys_input, results)
 
 
 if __name__ == "__main__":
