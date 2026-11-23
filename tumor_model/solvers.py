@@ -1,3 +1,4 @@
+
 # ODE-solver met Euler
 def euler_solver(ts_input, ys_input, model, r, K):
     # Initialisatie
@@ -40,6 +41,7 @@ def heun_solver(ts_input, ys_input, model, r, K):
 
         # Tweede update volgens Heun
         dydt2 = model(t1, y1, r, K)
+
         t = t + dt
         y = y + (dydt1 + dydt2) / 2.0 * dt
 
