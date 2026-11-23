@@ -1,6 +1,7 @@
-
 from data_reader import read_data
 from optimization import monte_carlo_simulation
+from visualization import plot_optimized_results, plot_results
+from comparison import compare_results, calculate_BIC_AIC_AICc
 
 from models import (
     exponential_model,
@@ -13,9 +14,6 @@ from solvers import (
     heun_solver,
     rk4_solver
 )
-
-from comparison import compare_results, calculate_BIC_AIC_AICc
-from visualization import plot_results
 
 
 # Data inladen
@@ -72,6 +70,8 @@ def run_comparisons(ts_input, ys_input, models, solvers):
 # Zoek de beste parameters met Monte Carlo
 def optimize_models(ts_input, ys_input, solver_results):
 
+    optimized_results = {}
+
     models = {
         "Exponentieel": exponential_model,
         "Logistisch": logistic_model,
@@ -100,20 +100,28 @@ def optimize_models(ts_input, ys_input, solver_results):
                 if result[2] < best_result[2]:
                     best_result = result
 
-            # Bepaal de BIC, AIC en AICc
             name = model_name + " + " + solver_name
 
-        bic_aic = calculate_BIC_AIC_AICc(ys_input, best_result, solver_results)
+            optimized_results[name] = results
 
-        # Print de beste parameters en MSE
-        print(name)
-        print("Beste r:", best_result[0])
+            # Bepaal de BIC, AIC en AICc
+            bic_aic = calculate_BIC_AIC_AICc(
+                ys_input, best_result, solver_results
+            )
 
-        if name != "Exponentieel":
-            print("Beste K:", best_result[1])
+            # Print de beste parameters en MSE
+            print(name)
+            print("Beste r:", best_result[0])
 
-        print("Laagste MSE:", best_result[2])
-        print("Modelvergelijking:\n", bic_aic)
+            if model_name != "Exponentieel":
+                print("Beste K:", best_result[1])
+
+            print("Laagste MSE:", best_result[2])
+            print()
+            print("Modelvergelijking:\n", bic_aic)
+            print()
+        
+    return optimized_results
 
 
 # Main functie waarin elke stap wordt uitgevoerd
@@ -134,9 +142,21 @@ def main():
 
     plot_results(ts_input, ys_input, results)
 
-    optimize_models(ts_input, ys_input, results)
+    optimized_results = optimize_models(ts_input, ys_input, results)
 
-    # calculate_BIC_AIC_AICc(ys_input, results)
+    optimization_models = {
+        "Exponentieel": exponential_model,
+        "Logistisch": logistic_model,
+        "Gompertz": gompertz_model
+    }
+
+    plot_optimized_results(
+        ts_input,
+        ys_input,
+        optimized_results,
+        optimization_models,
+        solvers
+    )
 
 
 if __name__ == "__main__":
