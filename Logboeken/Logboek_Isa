@@ -131,26 +131,29 @@ Ik ga kijken hoe het model veranderd op het moment dat er instellingen worden aa
 ### Donderdag 19-11-2026
 
 ```python
+
 from matplotlib import pyplot as plt
 
 # Tijd en tumorgrootte data
 ts_input = [0, 13, 20, 32, 42, 55, 65, 75, 85, 88, 95, 98, 107, 115, 120]
 ys_input = [250, 255, 550, 575, 576, 800, 1050, 1250, 1750, 2000, 2550, 2750, 3000, 3500, 4000]
 
-Nsteps = len(ts_input) - 1
-dt = (ts_input[-1] - ts_input[0]) / Nsteps
+# Parameter
+r = 0.02
 
 # Differentiaalvergelijking voor tumorgroei
 def ODE(t, y):
-    return r * y  # r = groeisnelheid
+    return r * y
 
 # Initialisatie
 t, y = ts_input[0], ys_input[0]
 ts_euler, ys_euler = [t], [y]
 
 # ODE-solver
-for _ in range(Nsteps):
+for i in range(len(ts_input) - 1):
+
     # Update volgens Euler
+    dt = ts_input[i + 1] - ts_input[i]
     dydt1 = ODE(t, y)
     t = t + dt
     y = y + dydt1 * dt
@@ -159,12 +162,14 @@ for _ in range(Nsteps):
     ts_euler.append(t)
     ys_euler.append(y)
 
-plt.plot(ts_input, ys_input, 'ok', label='Gemeten tumorgrootte')
+# Plot resultaten
+plt.plot(ts_input, ys_input, '-ok', label='Gemeten tumorgrootte')
 plt.plot(ts_euler, ys_euler, '.:r', label='Euler')
 plt.grid(True)
 plt.legend()
 plt.xlabel('Tijd (dagen)')
 plt.ylabel('Tumorgrootte')
+plt.title('Exponentieel tumorgroeimodel')
 plt.show()
 ```
 
@@ -180,7 +185,77 @@ Ik ben van plan nog een aantal modellen aan te passen op onze data en deze vervo
 Vervolgens wil ik alle modellen die zijn aangepast op onze data beginnen te optimaliseren.
 Dit kan bijvoorbeeld met Monte Carlo, waar wij gisteren uitleg over hebben gekregen.
 
+### Vrijdag 20-11-2026
+
+Vandaag ga ik verder met de ODE's.
+Ik heb de code van Euler's method nog ietsjes aangepast, aangezien ik het nog niet netjes in rules had verdeeld.
+
+```python
+
+from matplotlib import pyplot as plt
+
+# Tijd en tumorgrootte data
+ts_input = [0, 13, 20, 32, 42, 55, 65, 75, 85, 88, 95, 98, 107, 115, 120]
+ys_input = [250, 255, 550, 575, 576, 800, 1050, 1250, 1750, 2000, 2550, 2750, 3000, 3500, 4000]
+
+# Parameter
+r = 0.02
+
+# Differentiaalvergelijking voor tumorgroei
+def ODE(t, y):
+    return r * y
+
+# ODE-solver met Euler
+def euler_solver(ts_input, ys_input):
+
+    # Initialisatie
+    t, y = ts_input[0], ys_input[0]
+    ts_euler, ys_euler = [t], [y]
+
+    # ODE-solver
+    for i in range(len(ts_input) - 1):
+
+        # Update volgens Euler
+        dt = ts_input[i + 1] - ts_input[i]
+        dydt1 = ODE(t, y)
+        t = t + dt
+        y = y + dydt1 * dt
+
+        # Bewaar tussenresultaten
+        ts_euler.append(t)
+        ys_euler.append(y)
+
+    return ts_euler, ys_euler
+
+# Plot resultaten
+def plot_results(ts_input, ys_input, ts_euler, ys_euler):
+    plt.plot(ts_input, ys_input, '-ok', label='Gemeten tumorgrootte')
+    plt.plot(ts_euler, ys_euler, '.:r', label='Euler')
+    plt.grid(True)
+    plt.legend()
+    plt.xlabel('Tijd (dagen)')
+    plt.ylabel('Tumorgrootte')
+    plt.title('Exponentieel tumorgroeimodel')
+    plt.show()
+
+
+# Uitvoeren
+ts_euler, ys_euler = euler_solver(ts_input, ys_input)
+plot_results(ts_input, ys_input, ts_euler, ys_euler)
+```
+
+Dus bij deze nu Euler's method die ik ga gebruiken voor ons project.
+Ik ga vandaag en morgen verder met het uitwerken van diverse ODE's, zodat wij deze met elkaar kunnen vergelijken en optimaliseren.
+
+
+
+### Zaterdag 21-11-2026
+
+### Zondag 22-11-2026
+
+
 
 ## Referenties
 - Chan, K., Kao, C.-Y., Gordinier, J., & Ganden, K. (2023). Treatment Optimization for Tumor Growth by Ordinary Differential Equations. Journal Of Student Research, 12(4), 1. https://pdfs.semanticscholar.org/f6ee/c4177cef6405658d391ce685363a197e7534.pdf#:~:text=In%20this%20paper%2C%20we%20analyze%20the%20efficacy%20of,our%20treatment%20function%2C%20as%20defined%20within%20our%20models.
 - https://functions.boardflare.com/math/calculus/ode-models/#:~:text=While%20the%20general-purpose%20ODE%20solvers%20handle%20arbitrary%20user-defined,with%20known%20behaviors%2C%20parameter%20interpretations%2C%20and%20real-world%20applications.
+- https://www.statology.org/how-to-perform-monte-carlo-simulations-in-python-with-example/
