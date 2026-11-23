@@ -1,7 +1,7 @@
 import math
 
 # Exponentieel groeimodel
-def exponential_model(t, y, r, K):
+def exponential_model(t, y, r):
     return r * y
 
 
