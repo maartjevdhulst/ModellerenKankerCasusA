@@ -14,7 +14,7 @@ from solvers import (
     rk4_solver
 )
 
-from comparison import compare_results
+from comparison import compare_results, calculate_BIC_AIC_AICc
 from visualization import plot_results
 
 
@@ -70,7 +70,7 @@ def run_comparisons(ts_input, ys_input, models, solvers):
 
 
 # Zoek de beste parameters met Monte Carlo
-def optimize_models(ts_input, ys_input):
+def optimize_models(ts_input, ys_input, solver_results):
 
     models = {
         "Exponentieel": exponential_model,
@@ -93,16 +93,20 @@ def optimize_models(ts_input, ys_input):
                 model_name, 5000
             )
 
-            best_result = min(results, key=lambda result: result[2])
+        # Loop door de resultaten en vind de laagste MSE
+        for result in results:
+            if result[2] < best_result[2]:
+                best_result = result
 
-            print(model_name, "+", solver_name)
-            print("Beste r:", best_result[0])
+        bic_aic = calculate_BIC_AIC_AICc(ys_input, best_result, solver_results)
 
-            if model_name != "Exponentieel":
-                print("Beste K:", best_result[1])
-
-            print("Laagste MSE:", best_result[2])
-            print()
+        # Print de beste parameters en MSE
+        print(name)
+        print("Beste r:", best_result[0])
+        if name != "Exponentieel":
+            print("Beste K:", best_result[1])
+        print("Laagste MSE:", best_result[2])
+        print("Modelvergelijking:\n", bic_aic)
 
 
 # Main functie waarin elke stap wordt uitgevoerd
@@ -123,7 +127,9 @@ def main():
 
     plot_results(ts_input, ys_input, results)
 
-    optimize_models(ts_input, ys_input)
+    optimize_models(ts_input, ys_input, results)
+
+    # calculate_BIC_AIC_AICc(ys_input, results)
 
 
 if __name__ == "__main__":
