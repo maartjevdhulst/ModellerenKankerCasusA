@@ -144,20 +144,6 @@ def main():
 
     optimized_results = optimize_models(ts_input, ys_input, results)
 
-    optimization_models = {
-        "Exponentieel": exponential_model,
-        "Logistisch": logistic_model,
-        "Gompertz": gompertz_model
-    }
-
-    plot_optimized_results(
-        ts_input,
-        ys_input,
-        optimized_results,
-        optimization_models,
-        solvers
-    )
-
 
 if __name__ == "__main__":
     main()
