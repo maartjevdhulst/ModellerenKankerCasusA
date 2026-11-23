@@ -356,6 +356,9 @@ Ik noteer hieronder kort wat ik heb gevonden:
 Hieruit kan ik halen dat RK4 over het algemeen het meest nauwkeurig zou moeten zijn.
 Aangezien onze 'dagen' kolom in onze data niet expontieel maar willekeurig is, vraag ik mij echter wel af of dit geen problemen veroorzaakt met de nauwkeurigheid van de modellen en solvers.
 
+Ik ga alsnog wel bezig met een begin van Runge-Kutta, aangezien het mij wel intressant lijkt om te zien of er verschil zit in de nauwkeurigheid van de 3 solvers.
+En of de models veel invloed hebben op
+
 ```python
 # ODE-solver met Runge-Kutta 4
 def rk4_solver(ts_input, ys_input, model, r, K):
