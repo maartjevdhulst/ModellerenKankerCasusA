@@ -93,18 +93,25 @@ def optimize_models(ts_input, ys_input, solver_results):
                 model_name, 5000
             )
 
-        # Loop door de resultaten en vind de laagste MSE
-        for result in results:
-            if result[2] < best_result[2]:
-                best_result = result
+            # Zoek het resultaat met de laagste MSE
+            best_result = results[0]
+
+            for result in results:
+                if result[2] < best_result[2]:
+                    best_result = result
+
+            # Bepaal de BIC, AIC en AICc
+            name = model_name + " + " + solver_name
 
         bic_aic = calculate_BIC_AIC_AICc(ys_input, best_result, solver_results)
 
         # Print de beste parameters en MSE
         print(name)
         print("Beste r:", best_result[0])
+
         if name != "Exponentieel":
             print("Beste K:", best_result[1])
+            
         print("Laagste MSE:", best_result[2])
         print("Modelvergelijking:\n", bic_aic)
 
