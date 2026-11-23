@@ -111,7 +111,7 @@ def optimize_models(ts_input, ys_input, solver_results):
 
         if name != "Exponentieel":
             print("Beste K:", best_result[1])
-            
+
         print("Laagste MSE:", best_result[2])
         print("Modelvergelijking:\n", bic_aic)
 
