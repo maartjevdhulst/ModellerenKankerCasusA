@@ -15,7 +15,6 @@ from solvers import (
     rk4_solver
 )
 
-
 # Data inladen
 def load_data():
     # Lees de gegevens uit het CSV-bestand met data_reader.py
@@ -143,6 +142,20 @@ def main():
     plot_results(ts_input, ys_input, results)
 
     optimized_results = optimize_models(ts_input, ys_input, results)
+
+    optimization_models = {
+        "Exponentieel": exponential_model,
+        "Logistisch": logistic_model,
+        "Gompertz": gompertz_model
+    }
+
+    plot_optimized_results(
+        ts_input,
+        ys_input,
+        optimized_results,
+        optimization_models,
+        solvers
+    )
 
 
 if __name__ == "__main__":
